@@ -45,7 +45,7 @@ public class Actions {
             System.out.println("____________________________");
 
             System.out.print("Enter your new login: ");
-            String login = scanner.next();
+            String newlogin = scanner.next();
 
             System.out.print("Enter your new password: ");
             String password = scanner.next();
