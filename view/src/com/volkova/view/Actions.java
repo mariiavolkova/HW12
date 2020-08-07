@@ -1,6 +1,5 @@
 package com.volkova.view;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 import com.volkova.model.User;
@@ -11,6 +10,7 @@ public class Actions {
 
     Scanner scanner = new Scanner(System.in);
     UserService userService = new UserServiceImpl();
+
 
     void createUser() {
         System.out.print("Enter your login: ");
@@ -35,45 +35,49 @@ public class Actions {
         userService.createUser(login, password, name, surname, age, maritalStatus);
     }
 
-    void updateUser() {
-        System.out.println("Enter your Login to Update account: ");
-        String login = scanner.next();
-        User users = new User();
 
-        if (Objects.equals(login, users.getLogin())) {
+    void updateUser() {
+        System.out.println("Enter your Password to Update account: ");
+        String password = scanner.next();
+        User user = new User();
+
+        if (password.equals(user.getPassword())) {
             System.out.println("Now you can Update account.");
             System.out.println("____________________________");
 
             System.out.print("Enter your new login: ");
-            String newlogin = scanner.next();
+            String newLogin = scanner.next();
 
             System.out.print("Enter your new password: ");
-            String password = scanner.next();
+            String newPassword = scanner.next();
 
             System.out.print("Enter your new name: ");
-            String name = scanner.next();
+            String newName = scanner.next();
 
             System.out.print("Enter your new surname: ");
-            String surname = scanner.next();
+            String newSurname = scanner.next();
 
             System.out.println("Enter your new age (only numbers!!!): ");
             var age = scanner.nextInt();
 
             System.out.print("Enter your new Marital Status: ");
-            String maritalStatus = scanner.next();
+            String newMaritalStatus = scanner.next();
 
-            userService.updateUser(login, password, name, surname, age, maritalStatus);
 
+            userService.updateUser(newLogin, newPassword, newName, newSurname, age, newMaritalStatus);
         } else {
-            System.out.println("Invalid Login! Try again!");
+            System.out.println("Invalid Password! Try again!");
         }
     }
 
     void deleteUser() {
         System.out.println("Enter your Login to Delete account: ");
         String login = scanner.next();
+        User user = new User();
 
-        userService.deleteUser(login);
+        if (login.equals(user.getLogin())) {
+            userService.deleteUser(user);
+        }
         System.out.println("Your account deleted!");
 
     }
