@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService {
     private int nullAge = 0;
     private int maxAge = 150;
 
+
     @Override
     public void createUser(String login, String password, String name, String surname, int age, String maritalStatus) {
         if (age <= nullAge || age > maxAge) {
@@ -31,20 +32,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(String login) {
-        users.remove(login);
+    public void deleteUser(User user) {
+        users.remove(user);
     }
 
     @Override
-    public void updateUser(String login, String password, String name, String surname, int age, String maritalStatus) {
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
-        user.setName(name);
-        user.setSurname(surname);
-        user.setAge(age);
-        user.setMaritalStatus(maritalStatus);
-        users.add(user);
+    public void updateUser(String newLogin, String newPassword, String newName, String newSurname, int newAge, String newMaritalStatus) {
+        {
+            User user = new User();
+            user.setLogin(newLogin);
+            user.setPassword(newPassword);
+            user.setName(newName);
+            user.setSurname(newSurname);
+            user.setAge(newAge);
+            user.setMaritalStatus(newMaritalStatus);
+            users.add(user);
+        }
     }
 
     @Override
